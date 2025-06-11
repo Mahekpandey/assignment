@@ -10,16 +10,16 @@ if (!fs.existsSync('dist')) {
 }
 
 // Minify JavaScript
-execSync('npx terser script.js -o dist/script.min.js -c -m');
+execSync('npx terser src/script.js -o dist/script.min.js -c -m');
 console.log('✓ JavaScript minified');
 
 // Minify CSS
-execSync('npx csso styles.css -o dist/styles.min.css');
+execSync('npx csso src/styles.css -o dist/styles.min.css');
 console.log('✓ CSS minified');
 
 // Minify HTML and update resource links
 const htmlMinifier = require('html-minifier-terser');
-let html = fs.readFileSync('index.html', 'utf8');
+let html = fs.readFileSync('src/index.html', 'utf8');
 // Replace file references before minification
 html = html.replace('styles.css', 'styles.min.css')
            .replace('script.js', 'script.min.js');
